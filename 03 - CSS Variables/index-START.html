@@ -22,6 +22,22 @@
 
   <style>
 
+    :root {
+      --base: #ffc600;
+      --spacing: 5px;
+      --blur: 10px;
+    }
+
+img {
+  background: var(--base);
+  padding: var(--spacing);
+  filter: blur(var(--blur));
+}
+
+.hl {
+  color: var(--base);
+}
+
     /*
       misc styles, nothing to do with CSS variables
     */
@@ -45,6 +61,18 @@
   </style>
 
   <script>
+
+    const slider = document.querySelectorAll('.controls input');
+
+    function handleInput() {
+        const suffix = this.dataset.sizing || '';
+        document.documentElement.style.setProperty(`--${this.name}`, this.value + suffix);
+    }
+
+    slider.forEach(input => input.addEventListener('change', handleInput));
+    slider.forEach(input => input.addEventListener('change', handleInput));
+
+
   </script>
 
 </body>
